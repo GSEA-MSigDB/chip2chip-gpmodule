@@ -1,0 +1,132 @@
+# Copyright (c) 2003-2017 Broad Institute, Inc., Massachusetts Institute of Technology, and Regents of the University of California.  All rights reserved.
+#Chip2Chip
+#Tue Jun 28 18:04:09 JST 2016
+JVMLevel=1.8
+LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00361\:999999999.99
+author=Aravind Subramanian, Broad Institute
+commandLine=<run-with-env> -u "java/1.8" java <java_flags> -Djava.util.prefs.PreferencesFactory\=com.allaboutbalance.articles.disableprefs.DisabledPreferencesFactory -Djava.awt.headless\=true -cp <libdir>commons-lang3-3.4.jar<path.separator><libdir>commons-io-2.4.jar<path.separator><libdir>commons-cli-1.2.jar<path.separator><libdir>gp-gsea.jar<path.separator><libdir>disable-prefs.jar<path.separator><libdir>gsea-3.0.jar org.genepattern.modules.gsea.Chip2ChipWrapper -gmx <gene.sets.database> -chip <chip.platform.file> -genesetmatrix_format <gene.set.matrix.output.format> -show_etiology <output.verbose.mapping.details> <alt.delim> <selected.gene.sets> -dev_mode <dev.mode> -create_zip <create.zip>
+cpuType=any
+taskDoc=doc.html
+description=Chip2Chip conversion from the GSEA project
+fileFormat=gmt;zip;txt;html;xls;css
+language=Java
+name=Chip2Chip
+os=any
+
+p1_MODE=IN
+p1_TYPE=FILE
+p1_default_value=
+p1_description=Gene sets database from GSEA website.
+p1_fileFormat=gmt;gmx;grp
+p1_numValues=1+
+p1_flag=
+p1_name=gene.sets.database
+p1_optional=
+p1_prefix=
+p1_prefix_when_specified=
+p1_type=java.io.File
+p1_value=ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c1.all.v6.0.symbols.gmt\=c1.all.v6.0.symbols.gmt [Positional];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.all.v6.0.symbols.gmt\=c2.all.v6.0.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cgp.v6.0.symbols.gmt\=c2.cgp.v6.0.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cp.v6.0.symbols.gmt\=c2.cp.v6.0.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cp.biocarta.v6.0.symbols.gmt\=c2.cp.biocarta.v6.0.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cp.kegg.v6.0.symbols.gmt\=c2.cp.kegg.v6.0.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cp.reactome.v6.0.symbols.gmt\=c2.cp.reactome.v6.0.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c3.all.v6.0.symbols.gmt\=c3.all.v6.0.symbols.gmt [Motif];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c3.mir.v6.0.symbols.gmt\=c3.mir.v6.0.symbols.gmt [Motif];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c3.tft.v6.0.symbols.gmt\=c3.tft.v6.0.symbols.gmt [Motif];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c4.all.v6.0.symbols.gmt\=c4.all.v6.0.symbols.gmt [Computational];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c4.cgn.v6.0.symbols.gmt\=c4.cgn.v6.0.symbols.gmt [Computational];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c4.cm.v6.0.symbols.gmt\=c4.cm.v6.0.symbols.gmt [Computational];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.all.v6.0.symbols.gmt\=c5.all.v6.0.symbols.gmt [Gene Ontology];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.bp.v6.0.symbols.gmt\=c5.bp.v6.0.symbols.gmt [Gene Ontology];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.cc.v6.0.symbols.gmt\=c5.cc.v6.0.symbols.gmt [Gene Ontology];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.mf.v6.0.symbols.gmt\=c5.mf.v6.0.symbols.gmt [Gene Ontology];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c6.all.v6.0.symbols.gmt\=c6.all.v6.0.symbols.gmt [Oncogenic Signatures];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c7.all.v6.0.symbols.gmt\=c7.all.v6.0.symbols.gmt [Immunologic signatures];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/h.all.v6.0.symbols.gmt\=h.all.v6.0.symbols.gmt [Hallmarks]
+
+p2_MODE=IN
+p2_TYPE=FILE
+p2_choiceDir=ftp\://ftp.broadinstitute.org/pub/gsea/annotations/
+p2_choiceDirFilter=*.chip
+p2_default_value=
+p2_description=DNA Chip (array) annotation file from GSEA website.  Upload your own chip file if the one corresponding to your DNA Microarray platform is not listed in the drop-down menu.  A chip file is only required if collapse dataset is set to true.
+p2_fileFormat=chip
+p2_flag=
+p2_name=chip.platform.file
+p2_optional=
+p2_prefix=
+p2_prefix_when_specified=
+p2_type=java.io.File
+p2_value=
+
+p3_MODE=
+p3_TYPE=TEXT
+p3_default_value=gmt
+p3_description=Output format for the gene set matrix.
+p3_fileFormat=
+p3_flag=
+p3_name=gene.set.matrix.output.format
+p3_optional=
+p3_prefix=
+p3_prefix_when_specified=
+p3_type=java.lang.String
+p3_value=gmt;gmx
+
+p4_MODE=
+p4_TYPE=TEXT
+p4_default_value=true
+p4_description=Show the etiology for the features.
+p4_fileFormat=
+p4_flag=
+p4_name=output.verbose.mapping.details
+p4_optional=
+p4_prefix=
+p4_prefix_when_specified=
+p4_type=java.lang.String
+p4_value=false;true
+
+p5_MODE=
+p5_TYPE=TEXT
+p5_default_value=
+p5_description=Semicolon-separated list of gene sets from the provided gene sets database files (GMT/GMX/GRP).  If you are using multiple files then you *must* prefix each selected gene set with its file name followed by '#' (like "my_file1.gmt#selected_gene_set1,my_file2.gmt#selected_gene_set2").  With a single file only the names are necessary.  Leave this blank to select all gene sets.
+p5_fileFormat=
+p5_flag=
+p5_name=selected.gene.sets
+p5_optional=on
+p5_prefix=
+p5_prefix_when_specified=-selected_gene_sets 
+p5_type=java.lang.String
+p5_value=
+
+p6_MODE=
+p6_TYPE=TEXT
+p6_default_value=
+p6_description=Optional alternate delimiter character for gene set names instead of comma for use with selected.gene.sets.  If used, a semicolon is recommended.
+p6_fileFormat=
+p6_flag=
+p6_name=alt.delim
+p6_optional=on
+p6_prefix=
+p6_prefix_when_specified=--altDelim=
+p6_type=java.lang.String
+p6_value=
+
+p7_MODE=
+p7_TYPE=TEXT
+p7_default_value=true
+p7_description=Create a ZIP bundle of the output files.
+p7_fileFormat=
+p7_flag=
+p7_name=create.zip
+p7_optional=
+p7_prefix=
+p7_prefix_when_specified=
+p7_type=java.lang.String
+p7_value=false;true
+p8_MODE=
+
+p8_TYPE=TEXT
+p8_default_value=false
+p8_description=Enable developer mode.
+p8_fileFormat=
+p8_flag=
+p8_name=dev.mode
+p8_optional=
+p8_prefix=
+p8_prefix_when_specified=
+p8_type=java.lang.String
+p8_value=false;true
+
+pipelineModel=
+privacy=public
+quality=development
+requiredPatchLSIDs=
+requiredPatchURLs=
+serializedModel=
+taskType=Gene List Selection
+category=beta
+userid=eby@broadinstitute.org
+version=Development revision with GSEA v3.0 code.  Update to unify the Gene Set Database parameters and to allow GenePattern to handle transfer of MSigDB files.
