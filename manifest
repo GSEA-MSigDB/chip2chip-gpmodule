@@ -1,8 +1,7 @@
 # Copyright (c) 2003-2017 Broad Institute, Inc., Massachusetts Institute of Technology, and Regents of the University of California.  All rights reserved.
 #Chip2Chip
-#Tue Jun 28 18:04:09 JST 2016
 JVMLevel=1.8
-LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00361\:999999999.99
+LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00361\:999999999
 author=Aravind Subramanian, Broad Institute
 commandLine=<run-with-env> -u "java/1.8" java <java_flags> -Djava.util.prefs.PreferencesFactory\=com.allaboutbalance.articles.disableprefs.DisabledPreferencesFactory -Djava.awt.headless\=true -cp <libdir>commons-lang3-3.4.jar<path.separator><libdir>commons-io-2.4.jar<path.separator><libdir>commons-cli-1.2.jar<path.separator><libdir>gp-gsea.jar<path.separator><libdir>disable-prefs.jar<path.separator><libdir>gsea-3.0.jar org.genepattern.modules.gsea.Chip2ChipWrapper -gmx <gene.sets.database> -chip <chip.platform.file> -genesetmatrix_format <gene.set.matrix.output.format> -show_etiology <output.verbose.mapping.details> <alt.delim> <selected.gene.sets> -dev_mode <dev.mode> -create_zip <create.zip>
 cpuType=any
