@@ -1,0 +1,20 @@
+# Copyright (c) 2003-2018 Broad Institute, Inc., Massachusetts Institute of Technology, and Regents of the University of California.  All rights reserved.
+#module: urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00361:1
+module: Chip2Chip
+name: Chip2Chip valid_user_gmt_subset_test
+description: Test Chip2Chip with subset-select out of a user-provided GMT, with full file name + gene set name.
+params:
+       gene.sets.database: [ "<%gpunit.testData%>gpunit/Chip2Chip/v1/input/c1.symbols.reduced.gmt" ]
+       chip.platform.file: "<%gpunit.testData%>gpunit/Chip2Chip/v1/input/HG_U95Av2.chip" 
+       gene.set.matrix.output.format: "gmt"
+       output.verbose.mapping.details: "false"
+       selected.gene.sets: "c1.symbols.reduced.gmt#CHR13Q12,c1.symbols.reduced.gmt#CHR8Q11,c1.symbols.reduced.gmt#CHR13Q14,c1.symbols.reduced.gmt#CHR14Q11,c1.symbols.reduced.gmt#CHRYQ11"
+       dev.mode: "true"
+       alt.delim: ""
+       create.zip: "false"
+assertions:
+       jobStatus: success
+       files:
+            "combo_mapped_to_HG_U95Av2.chip.gmt":
+                diffCmd: ../diffChip2ChipResults.sh
+                diff: "<%gpunit.resultData%>gpunit/Chip2Chip/v1/output/subset_select/valid_user_gmt_subset_test/combo_mapped_to_HG_U95Av2.chip.gmt"

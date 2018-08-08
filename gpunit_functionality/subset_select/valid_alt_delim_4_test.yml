@@ -1,0 +1,24 @@
+# Copyright (c) 2003-2018 Broad Institute, Inc., Massachusetts Institute of Technology, and Regents of the University of California.  All rights reserved.
+#module: urn:lsid:broad.mit.edu:cancer.software.genepattern.module.analysis:00361:1
+module: Chip2Chip
+name: Chip2Chip valid_alt_delim_4_test
+description: Test Chip2Chip using the Diabetes dataset with subset-select out of multiple user-provided GMTs based on C1 (synthetic gene sets with comma in the name), with semicolon as an alternate delimiter.
+params:
+       gene.sets.database: [ "<%gpunit.testData%>gpunit/GSEA/v19/input/c1.symbols.reduced.fake_for_alt_delim_test.pt1.gmt",
+                         "<%gpunit.testData%>gpunit/GSEA/v19/input/c1.symbols.reduced.fake_for_alt_delim_test.pt2.gmt", 
+                         "<%gpunit.testData%>gpunit/GSEA/v19/input/c1.symbols.reduced.fake_for_alt_delim_test.pt3.gmt", 
+                         "<%gpunit.testData%>gpunit/GSEA/v19/input/c1.symbols.reduced.fake_for_alt_delim_test.pt4.gmt" 
+                         ]
+       chip.platform.file: "<%gpunit.testData%>gpunit/Chip2Chip/v1/input/HG_U95Av2.chip" 
+       gene.set.matrix.output.format: "gmt"
+       output.verbose.mapping.details: "false"
+       selected.gene.sets: "c1.symbols.reduced.fake_for_alt_delim_test.pt3.gmt#chr,8q11;c1.symbols.reduced.fake_for_alt_delim_test.pt1.gmt#chr,13q12;c1.symbols.reduced.fake_for_alt_delim_test.pt3.gmt#chr,1q25;c1.symbols.reduced.fake_for_alt_delim_test.pt1.gmt#chr,13q14;c1.symbols.reduced.fake_for_alt_delim_test.pt2.gmt#chr,1p35"
+       dev.mode: "true"
+       alt.delim: ";"
+       create.zip: "false"
+assertions:
+       jobStatus: success
+       files:
+            "combo_mapped_to_HG_U95Av2.chip.gmt":
+                diffCmd: ../diffChip2ChipResults.sh
+                diff: "<%gpunit.resultData%>gpunit/Chip2Chip/v1/output/subset_select/valid_alt_delim_4_test/combo_mapped_to_HG_U95Av2.chip.gmt"
