@@ -4,15 +4,14 @@
 -->
 
 <project basedir="" default="devReleaseModule" name="Chip2chip">
-
+    <property name="main-class" value="org.genepattern.modules.gsea.Chip2ChipWrapper" />
     <path id="library.classpath">
         <fileset dir="lib" id="module.lib" includes="*.jar" />
     </path>
-
     <pathconvert property="class-path" pathsep=" " refid="library.classpath">
         <flattenmapper />
     </pathconvert>
-    
+
     <target name="init">
         <tstamp />
         <property name="test.version" value="999999999"/>
@@ -45,7 +44,7 @@
     <target name="package" depends="init, clean, compile">
         <jar basedir="build" defaultexcludes="true" includes="org/**" jarfile="${appfile}">
             <manifest>
-                <attribute name="Main-Class" value="org.genepattern.modules.gsea.Chip2ChipWrapper" />
+                <attribute name="Main-Class" value="${main-class}" />
                 <attribute name="Class-Path" value="${class-path}" />
             </manifest>
         </jar>
