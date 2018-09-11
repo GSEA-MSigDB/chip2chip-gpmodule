@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +27,6 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import xtools.chip2chip.Chip2Chip;
-import edu.mit.broad.genome.utils.ZipUtility;
 
 /**
  * Chip2ChipWrapper parses the command line arguments passed in by GP Server's run task page,
@@ -117,8 +117,6 @@ public class Chip2ChipWrapper {
 
         boolean createZip = StringUtils.equalsIgnoreCase(cl.getOptionValue("create_zip"), "true");
 
-        final ZipUtility zipUtility = new ZipUtility();
-
         // Set a couple of shutdownHooks to finish the job and clean up. Chip2Chip exits after running and does not return control back
         // to the module code. These are done as two separate hooks because: 1) creating the ZIP, copying the result files, and cleaning
         // up tmp_working need to be ordered to happen one after the other; and 2) deleteEmptyDirectories() is independent of those tasks.
@@ -127,8 +125,9 @@ public class Chip2ChipWrapper {
                 try {
                     if (!analysis.exists()) return;
                     try {
-                        // Zipper is a utility class in the GSEA JAR
-                        if (createZip) zipUtility.zipDir(analysis, new File(cwd, "chip2chip_results.zip"));
+                        if (createZip) {
+							copyZipToJobIfPresent(analysis, "chip2chip_results.zip", cwd);
+						}
                     }
                     finally {
                         FileUtils.copyDirectory(analysis, cwd);
@@ -139,7 +138,7 @@ public class Chip2ChipWrapper {
                     ioe.printStackTrace(System.err);
                 }
                 finally {
-                    FileUtils.deleteQuietly(tmp_working);
+//                    FileUtils.deleteQuietly(tmp_working);
                 }
             }
         });
@@ -230,6 +229,7 @@ public class Chip2ChipWrapper {
             printParam("out", analysis.getPath(), writer);
             printParam("rpt_label", "my_analysis", writer);
             printParam("genesetmatrix_format", outputFileFormat, writer);
+            printParam("zip_report", Boolean.toString(createZip), writer);
 
             if (StringUtils.isNotBlank(altDelim)) {
                 printParam("altDelim", altDelim, writer);
@@ -263,7 +263,29 @@ public class Chip2ChipWrapper {
         printParam(optionName, commandLine.getOptionValue(optionName), writer);
     }
 
-    private static void deleteEmptyDirectories(File dir) {
+    private static void copyZipToJobIfPresent(final File analysis, String zipFileName, File cwd) throws InternalError {
+	    if (!analysis.exists()) return;
+	
+	    Collection<File> zips = FileUtils.listFiles(analysis, new String[] { "zip" }, false);
+	    if (zips == null || zips.isEmpty()) return;
+	
+	    // Check that we have exactly one ZIP. This should never happen.
+	    if (zips.size() > 1) {
+	        throw new InternalError("Internal Error: multiple ZIP files created");
+	    }
+	    File zip = zips.iterator().next();
+	
+	    try {
+	        File dest = new File(cwd, zipFileName);
+	        FileUtils.moveFile(zip, dest);
+	    }
+	    catch (IOException ioe) {
+	        System.err.println("Internal error moving result ZIP: ");
+	        System.err.println(ioe.getMessage());
+	    }
+	}
+
+	private static void deleteEmptyDirectories(File dir) {
         File[] files = dir.listFiles();
         if (files != null) {
             for (int i = 0; i < files.length; i++) {
