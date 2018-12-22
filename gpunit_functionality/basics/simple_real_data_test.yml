@@ -4,7 +4,7 @@ module: Chip2Chip
 name: Chip2Chip simple_real_data_test
 description: Test Chip2Chip with a single drop-down gene set selection.
 params:
-       gene.sets.database: [ "ftp://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c1.all.v6.0.symbols.gmt" ]
+       gene.sets.database: [ "https://data.broadinstitute.org/gsea-msigdb/msigdb/release/6.0/c1.all.v6.0.symbols.gmt" ]
        chip.platform.file: "<%gpunit.testData%>gpunit/Chip2Chip/v1/input/HG_U95Av2.chip" 
        gene.set.matrix.output.format: "gmt"
        output.verbose.mapping.details: "false"
