@@ -20,14 +20,14 @@ unzip -q $zip2 -d $diffDir2
 sort $diffDir1/*.gm? > $diffDir1/sorted.matrix
 sort $diffDir2/*.gm? > $diffDir2/sorted.matrix
 
-diff --strip-trailing-cr -q $diffDir1/sorted.matrix $diffDir2/sorted.matrix
+diff -i --strip-trailing-cr -q $diffDir1/sorted.matrix $diffDir2/sorted.matrix
 status=$?
 
 # Likewise for the XLS file
 sort $diffDir1/*.xls > $diffDir1/sorted.xls
 sort $diffDir2/*.xls > $diffDir2/sorted.xls
 
-diff --strip-trailing-cr -q $diffDir1/sorted.xls $diffDir2/sorted.xls
+diff -i --strip-trailing-cr -q $diffDir1/sorted.xls $diffDir2/sorted.xls
 status=$(( $? + status ))
 
 # Checking etiology TXT report files.  We're working out of diffDir1 as that is from the 'expected' result.
@@ -35,7 +35,7 @@ txtFileList=$diffDir1/*.txt
 for txtFile in $txtFileList; do
    baseTxtFile=`basename $txtFile`
    if [ -s $diffDir2/$baseTxtFile ]; then
-      diff --strip-trailing-cr -q $txtFile $diffDir2/$baseTxtFile
+      diff -i --strip-trailing-cr -q $txtFile $diffDir2/$baseTxtFile
       status=$(( $? + status ))
    else
       status=$(( 1 + status ))

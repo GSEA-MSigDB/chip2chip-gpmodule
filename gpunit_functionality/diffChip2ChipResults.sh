@@ -12,7 +12,7 @@ diffDir2=`mktemp -d $base2.XXXXXX`
 sort $1 > $diffDir1/sorted.matrix
 sort $2 > $diffDir2/sorted.matrix
 
-diff --strip-trailing-cr -q $diffDir1/sorted.matrix $diffDir2/sorted.matrix
+diff -i --strip-trailing-cr -q $diffDir1/sorted.matrix $diffDir2/sorted.matrix
 status=$?
 
 rm -rf $diffDir1 $diffDir2
