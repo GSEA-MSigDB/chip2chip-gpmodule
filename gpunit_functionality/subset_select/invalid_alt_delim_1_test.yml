@@ -4,7 +4,7 @@ module: Chip2Chip
 name: Chip2Chip invalid_alt_delim_1_test
 description: Invalid test, failing to use alt.delim with C1 synthetic Gene Sets containing commas
 params:
-       gene.sets.database: [ "<%gpunit.testData%>gpunit/GSEA/v19/input/c1.symbols.reduced.fake_for_alt_delim_test.gmt" ]
+       gene.sets.database: [ "<%gpunit.testData%>gpunit/Chip2Chip/v1/input/c1.symbols.reduced.fake_for_alt_delim_test.gmt" ]
        chip.platform.file: "<%gpunit.testData%>gpunit/Chip2Chip/v1/input/HG_U95Av2.chip" 
        gene.set.matrix.output.format: "gmt"
        output.verbose.mapping.details: "false"

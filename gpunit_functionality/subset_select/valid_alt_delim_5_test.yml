@@ -4,7 +4,7 @@ module: Chip2Chip
 name: Chip2Chip valid_alt_delim_5_test
 description: Test Chip2Chip using the Diabetes dataset with subset-select out of a user-provided GMT based on C1 (synthetic gene sets with comma in the name), with semicolon as an alternate delimiter and full file name specifiers.
 params:
-       gene.sets.database: [ "<%gpunit.testData%>gpunit/GSEA/v19/input/c1.symbols.reduced.fake_for_alt_delim_test.gmt" ]
+       gene.sets.database: [ "<%gpunit.testData%>gpunit/Chip2Chip/v1/input/c1.symbols.reduced.fake_for_alt_delim_test.gmt" ]
        chip.platform.file: "<%gpunit.testData%>gpunit/Chip2Chip/v1/input/HG_U95Av2.chip" 
        gene.set.matrix.output.format: "gmt"
        output.verbose.mapping.details: "false"
