@@ -3,7 +3,7 @@
 JVMLevel=11
 LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00361\:999999999
 author=Aravind Subramanian, Broad Institute
-commandLine=<libdir>/gsea-cli.sh Chip2Chip -gmx <gene.sets.database> -chip <chip.platform.file> -genesetmatrix_format <gene.set.matrix.output.format> -show_etiology <output.verbose.mapping.details> <alt.delim> <selected.gene.sets> -dev_mode <dev.mode> -zip_report <create.zip> -run_as_genepattern true
+commandLine=<libdir>/gsea-cli.sh Chip2Chip -gmx_list <gene.sets.database> -chip <chip.platform.file> -genesetmatrix_format <gene.set.matrix.output.format> -show_etiology <output.verbose.mapping.details> <alt.delim> <selected.gene.sets> -dev_mode <dev.mode> -zip_report <create.zip> -run_as_genepattern true
 cpuType=any
 taskDoc=doc.html
 description=Chip2Chip conversion from the GSEA project
