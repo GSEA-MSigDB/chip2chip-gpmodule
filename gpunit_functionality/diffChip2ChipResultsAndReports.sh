@@ -23,9 +23,9 @@ sort $diffDir2/*.gm? > $diffDir2/sorted.matrix
 diff -i --strip-trailing-cr -q $diffDir1/sorted.matrix $diffDir2/sorted.matrix
 status=$?
 
-# Likewise for the XLS file
+# Likewise for the TSV file
 sort $diffDir1/*.xls > $diffDir1/sorted.xls
-sort $diffDir2/*.xls > $diffDir2/sorted.xls
+sort $diffDir2/*.tsv > $diffDir2/sorted.xls
 
 diff -i --strip-trailing-cr -q $diffDir1/sorted.xls $diffDir2/sorted.xls
 status=$(( $? + status ))
