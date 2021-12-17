@@ -24,10 +24,10 @@ diff -i --strip-trailing-cr -q $diffDir1/sorted.matrix $diffDir2/sorted.matrix
 status=$?
 
 # Likewise for the TSV file
-sort $diffDir1/*.xls > $diffDir1/sorted.xls
-sort $diffDir2/*.tsv > $diffDir2/sorted.xls
+sort $diffDir1/*.tsv > $diffDir1/sorted.tsv
+sort $diffDir2/*.tsv > $diffDir2/sorted.tsv
 
-diff -i --strip-trailing-cr -q $diffDir1/sorted.xls $diffDir2/sorted.xls
+diff -i --strip-trailing-cr -q $diffDir1/sorted.tsv $diffDir2/sorted.tsv
 status=$(( $? + status ))
 
 # Checking etiology TXT report files.  We're working out of diffDir1 as that is from the 'expected' result.
