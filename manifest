@@ -3,7 +3,7 @@
 JVMLevel=11
 LSID=urn\:lsid\:broad.mit.edu\:cancer.software.genepattern.module.analysis\:00361\:999999999
 author=Aravind Subramanian, Broad Institute
-commandLine=/opt/gsea/GSEA_4.2.3/gsea-cli.sh Chip2Chip -gmx_list <gene.sets.database> -chip <chip.platform.file> -genesetmatrix_format <gene.set.matrix.output.format> -show_etiology <output.verbose.mapping.details> <alt.delim> <selected.gene.sets> -dev_mode <dev.mode> -zip_report <create.zip> -run_as_genepattern true
+commandLine=/opt/gsea/GSEA_4.3.2/gsea-cli.sh Chip2Chip -gmx_list <gene.sets.database> -chip <chip.platform.file> -genesetmatrix_format <gene.set.matrix.output.format> -show_etiology <output.verbose.mapping.details> <alt.delim> <selected.gene.sets> -dev_mode <dev.mode> -zip_report <create.zip> -run_as_genepattern true
 cpuType=any
 taskDoc=doc.html
 description=Chip2Chip conversion from the GSEA project
@@ -11,10 +11,11 @@ fileFormat=gmt;zip;txt;html;xls;css
 language=Java
 name=Chip2Chip
 os=any
-job.docker.image=genepattern/gsea_4.2.3\:0.1
+job.docker.image=genepattern/gsea_4.3.2\:0.1
 
 p1_MODE=IN
 p1_TYPE=FILE
+p1_choiceDir=http://127.0.0.1:8092/gsea-public/gp_modules_gmt.json
 p1_default_value=
 p1_description=Gene sets database from GSEA website.
 p1_fileFormat=gmt;gmx;grp
@@ -25,12 +26,11 @@ p1_optional=
 p1_prefix=
 p1_prefix_when_specified=
 p1_type=java.io.File
-p1_value=ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c1.all.v7.5.1.symbols.gmt\=c1.all.v7.5.1.symbols.gmt [Positional];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.all.v7.5.1.symbols.gmt\=c2.all.v7.5.1.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cgp.v7.5.1.symbols.gmt\=c2.cgp.v7.5.1.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cp.v7.5.1.symbols.gmt\=c2.cp.v7.5.1.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cp.biocarta.v7.5.1.symbols.gmt\=c2.cp.biocarta.v7.5.1.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cp.kegg.v7.5.1.symbols.gmt\=c2.cp.kegg.v7.5.1.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cp.pid.v7.5.1.symbols.gmt\=c2.cp.pid.v7.5.1.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cp.reactome.v7.5.1.symbols.gmt\=c2.cp.reactome.v7.5.1.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c2.cp.wikipathways.v7.5.1.symbols.gmt\=c2.cp.wikipathways.v7.5.1.symbols.gmt [Curated];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c3.all.v7.5.1.symbols.gmt\=c3.all.v7.5.1.symbols.gmt [Motif];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c3.mir.v7.5.1.symbols.gmt\=c3.mir.v7.5.1.symbols.gmt [Motif];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c3.mir.mirdb.v7.5.1.symbols.gmt\=c3.mir.mirdb.v7.5.1.symbols.gmt [Motif];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c3.mir.mir_legacy.v7.5.1.symbols.gmt\=c3.mir.mir_legacy.v7.5.1.symbols.gmt [Motif];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c3.tft.v7.5.1.symbols.gmt\=c3.tft.v7.5.1.symbols.gmt [Motif];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c3.tft.gtrd.v7.5.1.symbols.gmt\=c3.tft.gtrd.v7.5.1.symbols.gmt [Motif];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c3.tft.tft_legacy.v7.5.1.symbols.gmt\=c3.tft.tft_legacy.v7.5.1.symbols.gmt [Motif];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c4.all.v7.5.1.symbols.gmt\=c4.all.v7.5.1.symbols.gmt [Computational];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c4.cgn.v7.5.1.symbols.gmt\=c4.cgn.v7.5.1.symbols.gmt [Computational];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c4.cm.v7.5.1.symbols.gmt\=c4.cm.v7.5.1.symbols.gmt [Computational];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.all.v7.5.1.symbols.gmt\=c5.all.v7.5.1.symbols.gmt [Ontology];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.go.v7.5.1.symbols.gmt\=c5.go.v7.5.1.symbols.gmt [Gene Ontology];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.go.bp.v7.5.1.symbols.gmt\=c5.go.bp.v7.5.1.symbols.gmt [Gene Ontology];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.go.cc.v7.5.1.symbols.gmt\=c5.go.cc.v7.5.1.symbols.gmt [Gene Ontology];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.go.mf.v7.5.1.symbols.gmt\=c5.go.mf.v7.5.1.symbols.gmt [Gene Ontology];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c5.hpo.v7.5.1.symbols.gmt\=c5.hpo.v7.5.1.symbols.gmt [Human Phenotype Ontology];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c6.all.v7.5.1.symbols.gmt\=c6.all.v7.5.1.symbols.gmt [Oncogenic Signatures];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c7.all.v7.5.1.symbols.gmt\=c7.all.v7.5.1.symbols.gmt [Immunologic signatures];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c7.immunesigdb.v7.5.1.symbols.gmt\=c7.immunesigdb.v7.5.1.symbols.gmt [Immunologic signatures];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c7.vax.v7.5.1.symbols.gmt\=c7.vax.v7.5.1.symbols.gmt [Immunologic signatures];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/c8.all.v7.5.1.symbols.gmt\=c8.all.v7.5.1.symbols.gmt [cell type signatures];ftp\://gpftp.broadinstitute.org/module_support_files/msigdb/gmt/h.all.v7.5.1.symbols.gmt\=h.all.v7.5.1.symbols.gmt [Hallmarks]
+p1_value=
 
 p2_MODE=IN
 p2_TYPE=FILE
-p2_choiceDir=ftp\://ftp.broadinstitute.org/pub/gsea/annotations_versioned/
-p2_choiceDirFilter=*.v7.5.1.chip
+p2_choiceDir=https://www.gsea-msigdb.org/gsea/msigdb/gp_modules_chip.json
 p2_default_value=
 p2_description=DNA Chip (array) annotation file from GSEA website.  Upload your own chip file if the one corresponding to your DNA Microarray platform is not listed in the drop-down menu.  A chip file is only required if collapse dataset is set to true.
 p2_fileFormat=chip
@@ -129,4 +129,4 @@ serializedModel=
 taskType=Gene List Selection
 categories=beta;gsea
 userid=eby@broadinstitute.org
-version=Development revision with GSEA v4.2.x code.
+version=Development revision with GSEA v4.3.x code.
